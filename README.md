@@ -1,139 +1,81 @@
-# 🚗 Vehicle Rental System - Database Design & SQL Queries
+=========================================================================================
+## ✅ Work Verification Checklist
+=========================================================================================
+Based on the assignment requirements, here is a clear confirmation of what has been done
+and what must be ensured before submission.
 
-## 📌 Overview
-This project is a simplified **Vehicle Rental System** designed to demonstrate database design concepts, ERD relationships, and SQL query skills.  
-It focuses on building a relational schema and writing queries using JOIN, EXISTS, WHERE, GROUP BY, and HAVING.
+✔ Designed a proper **ERD** with required tables (Users, Vehicles, Bookings)  
+✔ Included **Primary Keys (PK)** and **Foreign Keys (FK)**  
+✔ Implemented **One-to-Many** (User → Bookings) relationship  
+✔ Implemented **Many-to-One** (Bookings → Vehicle) relationship  
+✔ Ensured each booking links **exactly one user and one vehicle**  
+✔ Added required **status fields** (booking status, vehicle availability)  
+✔ Ensured **unique constraints** (email, registration number)  
+✔ Wrote SQL queries using:
+- INNER JOIN
+- NOT EXISTS
+- WHERE
+- GROUP BY & HAVING
 
-## 🎯 Objectives
-By completing this project, you will be able to:
-- Design ERD with **1:1, 1:N, N:1** relationships  
-- Understand **Primary Keys (PK)** and **Foreign Keys (FK)**  
-- Write SQL queries using **JOIN, EXISTS, WHERE, GROUP BY, HAVING**  
-- Apply real-world business logic to a database system  
+=========================================================================================
+## 📘 Theory Questions – Answers
+=========================================================================================
 
----
+-----------------------------------------------------------------------------------------
+### Question 1: What is a foreign key and why is it important in relational databases?
+-----------------------------------------------------------------------------------------
+A foreign key is a column (or set of columns) in a table that references the primary key
+of another table.
 
-## 🗂️ System Description
-The system manages:
-- **Users**
-- **Vehicles**
-- **Bookings**
+It is important because it:
+- Maintains **relationships between tables**
+- Ensures **referential integrity**
+- Prevents invalid or orphan records
+- Keeps data consistent across the database
 
----
+Example:
+`user_id` in the Bookings table is a foreign key referencing `user_id` in the Users table.
 
-## 🧠 Business Logic
+-----------------------------------------------------------------------------------------
+### Question 2: What is the difference between WHERE and HAVING clauses in SQL?
+-----------------------------------------------------------------------------------------
+The WHERE clause is used to filter **rows before grouping** occurs.
 
-### 👤 Users Table
-Must store:
-- `id` (Primary Key)
-- `role` (Admin / Customer)
-- `name`
-- `email` (Unique)
-- `password`
-- `phone`
+The HAVING clause is used to filter **groups after aggregation**.
 
-### 🚙 Vehicles Table
-Must store:
-- `id` (Primary Key)
-- `vehicle_name`
-- `type` (car / bike / truck)
-- `model`
-- `registration_number` (Unique)
-- `rental_price_per_day`
-- `availability_status` (available / rented / maintenance)
+Key differences:
+- WHERE works with individual rows
+- HAVING works with aggregated data (COUNT, SUM, AVG, etc.)
+- WHERE cannot use aggregate functions
+- HAVING is used with GROUP BY
 
-### 📅 Bookings Table
-Must store:
-- `id` (Primary Key)
-- `user_id` (Foreign Key → Users)
-- `vehicle_id` (Foreign Key → Vehicles)
-- `start_date`
-- `end_date`
-- `status` (pending / confirmed / completed / cancelled)
-- `total_cost`
+-----------------------------------------------------------------------------------------
+### Question 3: What is a primary key and what are its characteristics?
+-----------------------------------------------------------------------------------------
+A primary key is a column (or combination of columns) that uniquely identifies each record
+in a table.
 
----
+Characteristics of a primary key:
+- Must be **unique**
+- Cannot contain **NULL** values
+- One primary key per table
+- Ensures entity integrity
+- Used as a reference by foreign keys in other tables
 
-## 🧩 Part 1: ERD Design (Mandatory)
+Example:
+`vehicle_id` uniquely identifies each vehicle in the Vehicles table.
 
-### ✅ Required Tables
-- Users  
-- Vehicles  
-- Bookings  
+-----------------------------------------------------------------------------------------
+### Question 4: What is the difference between INNER JOIN and LEFT JOIN in SQL?
+-----------------------------------------------------------------------------------------
+INNER JOIN returns only the records that have matching values in both tables.
 
-### 🔗 Relationships
-- **One to Many:** Users → Bookings  
-- **Many to One:** Bookings → Vehicles  
-- **Logical One to One:** Each booking connects one user with one vehicle  
+LEFT JOIN returns:
+- All records from the left table
+- Matching records from the right table
+- NULL values where no match exists
 
-### 📌 ERD Must Include
-- Primary Keys (PK)  
-- Foreign Keys (FK)  
-- Relationship cardinality  
-- Status fields  
+In short:
+- INNER JOIN → matching data only
+- LEFT JOIN → all left table data + matched right table data
 
-### 🛠️ Tool
-- Use **Lucidchart ERD Tool**  
-- Submit a **public shareable ERD link**
-
-> 🔗 ERD Link: _[Paste your Lucidchart ERD link here]_
-
----
-
-## 🧪 Part 2: SQL Queries
-
-> 📄 See `QUERY.md` for sample input/output.
-
-### 🔹 Query 1: INNER JOIN  
-Retrieve booking info with:
-- Customer name  
-- Vehicle name  
-
-### 🔹 Query 2: NOT EXISTS  
-Find vehicles that have **never been booked**.
-
-### 🔹 Query 3: WHERE  
-Retrieve all **available vehicles** of a specific type (e.g., car).
-
-### 🔹 Query 4: GROUP BY & HAVING  
-Find total bookings per vehicle and show only those with **more than 2 bookings**.
-
-> 💡 You can write your SQL queries in a separate file: `queries.sql`
-
----
-
-## 🎤 Part 3: Theory Questions (Viva Practice)
-
-Record answers on camera in **Bengali or English**.  
-Spend ~2 minutes per question.
-
-1. What is a foreign key and why is it important?  
-2. Difference between WHERE and HAVING in SQL?  
-3. What is a primary key and its characteristics?  
-4. Difference between INNER JOIN and LEFT JOIN?
-
-> 🎥 Video Link: _[Paste your video link here]_
-
----
-
-## 📊 Evaluation Criteria
-
-| Section        | Marks |
-|----------------|--------|
-| ERD Design     | 60%    |
-| SQL Queries    | 20%    |
-| Theory Answers | 20%    |
-
----
-
-## 📚 Additional Resources
-- **QUERY.md** → Sample query results  
-- **Submission Guide** → Guidelines & deadlines  
-
----
-
-## 👨‍💻 Author
-**Md Ridoan**  
-Vehicle Rental System Database Project
-
----
